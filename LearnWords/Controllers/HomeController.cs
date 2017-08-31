@@ -8,7 +8,7 @@ using LearnWords.Models;
 
 namespace LearnWords.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -16,6 +16,7 @@ namespace LearnWords.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -23,6 +24,7 @@ namespace LearnWords.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

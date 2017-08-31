@@ -210,10 +210,8 @@
     <Compile Include="Authentication\UserIndentity.cs" />
     <Compile Include="Authentication\UserProvider.cs" />
     <Compile Include="Contexts\DBContext.cs" />
-    <Compile Include="Contexts\SqlDBContext.cs" />
-    <Compile Include="Controllers\Api\InstallHelperController.cs" />
+    <Compile Include="Controllers\Api\WordsHelperController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InstallController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\WordsController.cs" />
     <Compile Include="Exceptions\Authentication\AuthenticationException.cs" />
@@ -225,11 +223,13 @@
     </Compile>
     <Compile Include="Helpers\BrowserHelper.cs" />
     <Compile Include="Helpers\CacheHelper.cs" />
-    <Compile Include="Models\ExistWords.cs" />
     <Compile Include="Models\JsonResponse.cs" />
     <Compile Include="Models\JsonState.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserWord.cs" />
+    <Compile Include="Models\Word.cs" />
     <Compile Include="Modules\AuthHttpModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\WordsService.cs" />
@@ -242,6 +242,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\docs.css" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\word.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -289,9 +291,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Install\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Words\Index.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

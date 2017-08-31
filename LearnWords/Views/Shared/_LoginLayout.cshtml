@@ -20,19 +20,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
-                @{
-                    var login = HttpContext.Current.User?.Identity?.Name;
-                }
-
-                @Html.ActionLink($"Главная ({login})", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Главная", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-
                     <li>@Html.ActionLink("О сайте", "About", "Home")</li>
                     <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Выйти", "LogOut", "Login")</li>
                 </ul>
             </div>
         </div>

@@ -27,6 +27,12 @@ namespace LearnWords
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/docs.css"));
+
+            bundles.Add(new StyleBundle("~/Content/login").Include(
+                "~/Content/login.css"));
+
+            bundles.Add(new StyleBundle("~/Content/word").Include(
+                "~/Content/word.css"));
         }
     }
 }

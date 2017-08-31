@@ -1,5 +1,109 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@Styles.Render("~/Content/word")
 
 
+<div class="row padding-tb-10">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="text-center">
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Добавить</button>
+                <button id="editBtn" type="button" class="btn btn-default" disabled="disabled">Изменить</button>
+                <button id="deleteBtn" type="button" class="btn btn-default" disabled="disabled">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-container">
+    <div class="content">
+        <table id="list" class="table .table-condensed">
+            <tr><th style="width: 80%"> Слово </th></tr>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    var lastActive = null;
+
+
+    $(document).ready(function () {
+
+        // Load words
+        $.getJSON("/api/WordsHelper/GetList", function (data) {
+            $("div.content-container").css("height", $(window).height() - 200);
+
+            for (var i = 0; i < data.length; i++) {
+                $('#list tr:last').after('<tr word-id="' + data[i].Id + '"><td> ' + data[i].Value + ' </td></tr>');
+            }
+
+            $("table tr").on("click", function () {
+                var item = $(this);
+
+                if (typeof item.attr("word-id") === "undefined") {
+                    return;
+                }
+
+                if (lastActive != null) {
+                    lastActive.removeClass("active");
+                    if (item.attr("word-id") === lastActive.attr("word-id")) {
+                        lastActive = null;
+                        $("#editBtn").attr("disabled", "disabled");
+                        $("#deleteBtn").attr("disabled", "disabled");
+                        return;
+                    }
+                }
+                item.addClass("active");
+                lastActive = item;
+                $("#editBtn").removeAttr("disabled");
+                $("#deleteBtn").removeAttr("disabled");
+            });
+
+        })
+            .fail(function () {
+                alert("Error get words");
+            });
+
+    });
+
+    function Add() {
+        $.post("ajax/test.html", function (data) {
+            $(".result").html(data);
+        });
+    }
+
+    function Delete() {
+
+    }
+
+    function Edit() {
+
+    }
+
+
+
+</script>
