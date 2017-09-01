@@ -23,6 +23,10 @@ namespace LearnWords
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/basescript").Include(
+                "~/Scripts/layout.js",
+                "~/Scripts/AjaxHelper.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",

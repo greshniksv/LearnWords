@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Http.Results;
 using LearnWords.Contexts;
 using LearnWords.Extensions;
@@ -37,7 +38,7 @@ namespace LearnWords.Controllers.Api
         }
 
         [System.Web.Http.HttpPost]
-        public JsonResult<JsonResponse> Add(string word)
+        public JsonResult<JsonResponse> Add([FromBody]string word)
         {
             var userId = HttpContext.Current.UserId();
             using (var db = new DBContext())
@@ -54,7 +55,7 @@ namespace LearnWords.Controllers.Api
         }
 
         [System.Web.Http.HttpPost]
-        public JsonResult<JsonResponse> Edit(Guid id, string word)
+        public JsonResult<JsonResponse> Edit(Guid? id, string word)
         {
             var userId = HttpContext.Current.UserId();
             using (var db = new DBContext())
@@ -71,7 +72,7 @@ namespace LearnWords.Controllers.Api
             return Json(new JsonResponse(false, "User or word not found"));
         }
 
-        [System.Web.Http.HttpPost]
+        [System.Web.Http.HttpDelete]
         public JsonResult<JsonResponse> Delete(Guid id)
         {
             var userId = HttpContext.Current.UserId();

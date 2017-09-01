@@ -9,6 +9,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/basescript")
 
 </head>
 <body>
@@ -38,15 +39,34 @@
         </div>
     </div>
     <div class="container body-content">
+
+        <div class='wait-overlay'></div>
+
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Learn Words Application</p>
-        </footer>
+        @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Learn Words Application</p>
+            </footer>*@
     </div>
 
-    
-    
+    <div id="footer">
+        <div class="container footer-container">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Dropup <span class="caret caret-up"></span>
+                </button>
+                <ul class="dropdown-menu drop-up" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

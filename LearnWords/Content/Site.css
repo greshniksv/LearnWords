@@ -1,6 +1,5 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -38,4 +37,52 @@ textarea {
     border: 1px solid #eee;
     border-left-width: 5px;
     border-radius: 3px;
+}
+
+.caret-up {
+    /* Safari */
+    -webkit-transform: rotate(-180deg);
+    
+    /* Firefox */
+    -moz-transform: rotate(-180deg);
+    
+    /* IE */
+    -ms-transform: rotate(-180deg);
+    
+    /* Opera */
+    -o-transform: rotate(-180deg);
+    
+    /* Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=6);
+
+}
+
+.drop-up {
+    top: auto;
+    bottom: 100% !important;
+}
+
+#footer {
+    height: 60px;
+    background-color: #333;
+}
+
+.footer-container {
+    padding-top: 4px;
+}
+
+.wait-overlay {
+    background-color: lightgrey;
+    opacity: 0.6;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 2000;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-image: url('/Content/images/wait.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    display: none;
 }
