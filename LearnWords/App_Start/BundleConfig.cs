@@ -37,6 +37,9 @@ namespace LearnWords
 
             bundles.Add(new StyleBundle("~/Content/word").Include(
                 "~/Content/word.css"));
+
+            bundles.Add(new StyleBundle("~/Content/games").Include(
+                "~/Content/games.css"));
         }
     }
 }

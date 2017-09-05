@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LearnWords.Models
+namespace LearnWords.Models.Db
 {
     public class UserWord
     {

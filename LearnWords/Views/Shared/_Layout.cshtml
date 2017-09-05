@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -26,10 +26,12 @@
                     var login = HttpContext.Current.User?.Identity?.Name;
                 }
 
-                @Html.ActionLink($"Главная ({login})", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink($"Главная", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Слова", "Index", "Words")</li>
+                    <li>@Html.ActionLink("Игры", "Index", "Games")</li>
 
                     <li>@Html.ActionLink("О сайте", "About", "Home")</li>
                     <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
@@ -39,33 +41,24 @@
         </div>
     </div>
     <div class="container body-content">
-
         <div class='wait-overlay'></div>
-
         @RenderBody()
-        @*<hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Learn Words Application</p>
-            </footer>*@
     </div>
 
     <div id="footer">
         <div class="container footer-container">
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Dropup <span class="caret caret-up"></span>
+                    Пользователь: @login <span class="caret caret-up"></span>
                 </button>
                 <ul class="dropdown-menu drop-up" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
+                    <li>@Html.ActionLink("Выйти", "LogOut", "Login")</li>
                     <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">Редактировать</a></li>
                 </ul>
             </div>
         </div>
     </div>
-
 
     @RenderSection("scripts", required: false)
 </body>

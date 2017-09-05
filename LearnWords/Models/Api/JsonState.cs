@@ -1,5 +1,5 @@
 ﻿
-namespace LearnWords.Models
+namespace LearnWords.Models.Api
 {
     public class JsonState
     {

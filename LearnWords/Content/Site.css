@@ -1,5 +1,6 @@
 ﻿body {
     padding-top: 50px;
+    padding-bottom: 40px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -54,7 +55,6 @@ textarea {
     
     /* Internet Explorer */
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=6);
-
 }
 
 .drop-up {
@@ -63,12 +63,16 @@ textarea {
 }
 
 #footer {
-    height: 60px;
+    height: 40px;
     background-color: #333;
+    position: fixed;
+    z-index: 1000;
+    bottom: 0px;
+    width: 100%;
 }
 
 .footer-container {
-    padding-top: 4px;
+    padding-top: 3px;
 }
 
 .wait-overlay {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace LearnWords.Models
+﻿namespace LearnWords.Models.Api
 {
     public class JsonResponse
     {

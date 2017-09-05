@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LearnWords.Models
+namespace LearnWords.Models.Db
 {
     public class Word
     {

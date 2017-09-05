@@ -1,0 +1,22 @@
+﻿@model LearnWords.Games.IGame
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    @foreach (string lib in Model.CommonLibs)
+    {
+        <script src="/Scripts/@lib"></script>
+    }
+    <script src="/Scripts/Games/@Model.JsEngine"></script>
+
+    <title>@Model.Name</title>
+</head>
+<body>
+<div>
+      <h1> Wait, '@Model.Name' is launching... </h1>
+</div>
+</body>
+</html>

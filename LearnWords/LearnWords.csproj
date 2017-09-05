@@ -212,7 +212,11 @@
     <Compile Include="Authentication\UserIndentity.cs" />
     <Compile Include="Authentication\UserProvider.cs" />
     <Compile Include="Contexts\DBContext.cs" />
+    <Compile Include="Controllers\Api\GameHelperController.cs" />
+    <Compile Include="Controllers\Api\GamesHelperController.cs" />
     <Compile Include="Controllers\Api\WordsHelperController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\WordsController.cs" />
@@ -220,18 +224,21 @@
     <Compile Include="Exceptions\Authentication\CookieDecryptException.cs" />
     <Compile Include="Exceptions\Authentication\UserNotFoundException.cs" />
     <Compile Include="Extensions\HttpContextBaseExtensions.cs" />
+    <Compile Include="Games\IGame.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\BrowserHelper.cs" />
     <Compile Include="Helpers\CacheHelper.cs" />
-    <Compile Include="Models\JsonResponse.cs" />
-    <Compile Include="Models\JsonState.cs" />
+    <Compile Include="Models\Api\EditObject.cs" />
+    <Compile Include="Models\Api\GameInfo.cs" />
+    <Compile Include="Models\Api\JsonResponse.cs" />
+    <Compile Include="Models\Api\JsonState.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserWord.cs" />
-    <Compile Include="Models\Word.cs" />
+    <Compile Include="Models\Db\UserWord.cs" />
+    <Compile Include="Models\Db\Word.cs" />
     <Compile Include="Modules\AuthHttpModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\WordsService.cs" />
@@ -244,6 +251,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\docs.css" />
+    <Content Include="Content\games.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\word.css" />
     <Content Include="favicon.ico" />
@@ -298,6 +306,8 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Words\Index.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Games\Index.cshtml" />
+    <Content Include="Views\Game\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -307,6 +317,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\Games\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
