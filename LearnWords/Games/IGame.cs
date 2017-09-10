@@ -4,9 +4,9 @@ namespace LearnWords.Games
 {
     public interface IGame
     {
-        string Name { get; set; }
-        string Details { get; set; }
-        string JsEngine { get; set; }
-        List<string> CommonLibs { get; set; }
+        string Name { get; }
+        string Details { get; }
+        string JsEngine { get; }
+        List<string> CommonLibs { get; }
     }
 }

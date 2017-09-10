@@ -38,10 +38,18 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="newWord">Новое слово</label>
-                    <input class="form-control input-sm" id="newWord" type="text" name="value" />
+                    <label for="newWordRus">Описание слова</label>
+                    <input class="form-control input-sm" id="newWordRus" type="text" name="value" />
+                </div>
+                <div class="form-group">
+                    <label for="newWordOther">Слово</label>
+                    <div class="input-group">
+                        <span id="checkWord" status="1" class="input-group-addon glyphicon glyphicon-ok" style="top: 0px !important;"> </span>
+                        <input type="text" id="newWordOther"  class="form-control" placeholder="Галочка доя проверки слова">
+                    </div>
                 </div>
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" onclick="Add()">Добавить</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
@@ -97,11 +105,26 @@
 <script type="text/javascript">
     var lastActive = null;
 
+   
+
+
     $(document).ready(function () {
         $("div.content-container").css("height", $(window).height() - 155);
 
         // Load words
         LoadWords();
+
+        $("#checkWord").click(function() {
+            if ($(this).attr("status") === "1") {
+                $(this).attr("status", "0");
+                $(this).removeClass("glyphicon-ok");
+                $(this).addClass("glyphicon-ban-circle");
+            } else {
+                $(this).attr("status", "1");
+                $(this).removeClass("glyphicon-ban-circle");
+                $(this).addClass("glyphicon-ok");
+            }
+        });
 
     });
 
@@ -148,9 +171,10 @@
         $('#AddNew').modal('hide');
         Layout.ShowLoading();
 
-        var newWord = $("#newWord").val();
+        var newWordRus = $("#newWordRus").val();
+        var newWordOther = $("#newWordOther").val();
 
-        Ajax.Post("/api/WordsHelper/Add", JSON.stringify(newWord),
+        Ajax.Post("/api/WordsHelper/Add", JSON.stringify({ "RusWord": newWordRus, "OtherWord": newWordOther }),
             function (data) {
                 if (data.Code !== 0) {
                     alert(data.Description);

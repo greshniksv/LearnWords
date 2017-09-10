@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Игры";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/games")
+
+<h2>Игры</h2>
+
+<div class="content-container">
+    <div class="content">
+        <table id="list" class="table .table-condensed">
+            <tr><th style="display: none"> - </th></tr>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div id="info" class="bs-callout bs-callout-info">
+            <h4>Информация об игре</h4>
+            <p> ... <br /> ... <br /> ... </p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var lastActive = null;
+    var gameList = null;
+    var defaultInfo = "... <br />... <br />...";
+
+    $(document).ready(function () {
+        $("div.content-container").css("height", $(window).height() - 320);
+
+        LoadWords();
+    });
+
+    function LoadWords() {
+
+        $('#list tr[game-id]').remove();
+
+        $.getJSON("/api/GamesHelper/GetList", function (data) {
+
+            gameList = data;
+            for (var i = 0; i < data.length; i++) {
+                $('#list tr:last').after('<tr game-id="' + data[i].Id + '"><td> ' + data[i].Name + ' </td></tr>');
+            }
+
+            $("table tr").on("click", function () {
+                var item = $(this);
+                var id = item.attr("game-id");
+
+                if (typeof item.attr("game-id") === "undefined") {
+                    return;
+                }
+
+                if (lastActive != null) {
+                    lastActive.removeClass("active");
+                    if (id === lastActive.attr("game-id")) {
+                        lastActive = null;
+                        $("#info p").html(defaultInfo);
+                        return;
+                    }
+                }
+                item.addClass("active");
+                lastActive = item;
+
+                for (var i = 0; i < gameList.length; i++) {
+                    if (gameList[i].Id === id) {
+                        $("#info p").html(gameList[i].Details);
+                        break;
+                    }
+                }
+
+            });
+
+        })
+            .fail(function () {
+                alert("Error get words");
+            });
+    }
+
+</script>

@@ -6,7 +6,6 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using LearnWords.Contexts;
 using LearnWords.Extensions;
-using LearnWords.Models;
 using LearnWords.Models.Api;
 using LearnWords.Models.Db;
 using LearnWords.Services;
@@ -33,16 +32,16 @@ namespace LearnWords.Controllers.Api
 
                 if (user != null)
                 {
-                    return Json(user.UserWords.OrderBy(x=>x.Word).Select(x => new Word(x)).ToList());
+                    return Json(user.UserWords.OrderBy(x => x.Word).Select(x => new Word(x)).ToList());
                 }
             }
             return Json(new List<Word>());
         }
 
         [System.Web.Http.HttpPost]
-        public JsonResult<JsonResponse> Add([FromBody]string word)
+        public JsonResult<JsonResponse> Add(Word word)
         {
-            if (string.IsNullOrEmpty(word))
+            if (string.IsNullOrEmpty(word.RusWord) || string.IsNullOrEmpty(word.OtherWord))
             {
                 return Json(new JsonResponse(false, "Word can't be null empty"));
             }
@@ -53,7 +52,13 @@ namespace LearnWords.Controllers.Api
                 var user = db.Users.FirstOrDefault(x => x.UserId == userId);
                 if (user != null)
                 {
-                    user.UserWords.Add(new UserWord { Word = word, User = user });
+                    user.UserWords.Add(new UserWord
+                    {
+                        Word = word.OtherWord,
+                        RusWord = word.RusWord,
+                        Image = word.Image,
+                        User = user
+                    });
                     db.SaveChanges();
                     return Json(new JsonResponse(true));
                 }

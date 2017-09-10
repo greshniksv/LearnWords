@@ -2,6 +2,7 @@
 
 namespace LearnWords.Controllers
 {
+    [Authorize]
     public class WordsController : Controller
     {
         // GET: Words

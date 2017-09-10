@@ -11,10 +11,14 @@ namespace LearnWords.Models.Db
         public Word(UserWord word)
         {
             Id = word.UserWordId;
-            Value = word.Word;
+            RusWord = word.RusWord;
+            OtherWord = word.Word;
+            Image = word.Image;
         }
 
         public Guid Id { get; set; }
-        public string Value { get; set; }
+        public string RusWord { get; set; }
+        public string OtherWord { get; set; }
+        public byte[] Image { get; set; }
     }
 }
