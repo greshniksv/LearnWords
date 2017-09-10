@@ -8,5 +8,6 @@ namespace LearnWords.Contexts
     {
         public DbSet<User> Users { get; set; }
         public DbSet<UserWord> UserWords { get; set; }
+        public DbSet<Dictionary> Dictionaries { get; set; }
     }
 }

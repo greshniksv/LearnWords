@@ -55,7 +55,7 @@ namespace LearnWords.Services
                             }
                             tr.Commit();
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             tr.Rollback();
                             throw;

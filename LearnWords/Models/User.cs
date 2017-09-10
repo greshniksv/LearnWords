@@ -16,6 +16,6 @@ namespace LearnWords.Models
         public string FullName { get; set; }
         public string Email { get; set; }
 
-        public virtual List<UserWord> UserWords { get; set; }
+        public virtual List<Dictionary> Dictionaries { get; set; }
     }
 }

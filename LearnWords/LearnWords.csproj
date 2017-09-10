@@ -26,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -217,6 +217,7 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\WordsController.cs" />
     <Compile Include="Exceptions\Authentication\AuthenticationException.cs" />
     <Compile Include="Exceptions\Authentication\CookieDecryptException.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="Models\Api\GameInfo.cs" />
     <Compile Include="Models\Api\JsonResponse.cs" />
     <Compile Include="Models\Api\JsonState.cs" />
+    <Compile Include="Models\Db\Dictionary.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\User.cs" />
@@ -308,6 +310,7 @@
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Game\List.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

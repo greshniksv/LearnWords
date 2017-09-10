@@ -12,8 +12,13 @@ namespace LearnWords.Models.Db
         public string RusWord { get; set; }
         public string Word { get; set; }
         public byte[] Image { get; set; }
+        public int Remember { get; set; }
+        
 
         public Guid UserId { get; set; }
         public virtual User  User { get; set; }
+
+        public Guid DictionaryId { get; set; }
+        public virtual Dictionary Dictionary { get; set; }
     }
 }

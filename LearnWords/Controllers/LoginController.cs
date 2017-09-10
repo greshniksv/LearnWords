@@ -63,7 +63,7 @@ namespace LearnWords.Controllers
 
                         ViewBag.Error = "Пользователь создался успешно";
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         ViewBag.Error = "Ошибка создания пользователя";
                     }

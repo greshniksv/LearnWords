@@ -32,7 +32,9 @@ namespace LearnWords.Controllers.Api
 
                 if (user != null)
                 {
-                    return Json(user.UserWords.OrderBy(x => x.Word).Select(x => new Word(x)).ToList());
+                    return
+                        Json(user.Dictionaries.First().UserWords.
+                            OrderBy(x => x.Word).Select(x => new Word(x)).ToList());
                 }
             }
             return Json(new List<Word>());
@@ -52,7 +54,7 @@ namespace LearnWords.Controllers.Api
                 var user = db.Users.FirstOrDefault(x => x.UserId == userId);
                 if (user != null)
                 {
-                    user.UserWords.Add(new UserWord
+                    user.Dictionaries.First().UserWords.Add(new UserWord
                     {
                         Word = word.OtherWord,
                         RusWord = word.RusWord,
@@ -73,7 +75,7 @@ namespace LearnWords.Controllers.Api
             using (var db = new DBContext())
             {
                 var user = db.Users.FirstOrDefault(x => x.UserId == userId);
-                var wordItem = user?.UserWords.FirstOrDefault(x => x.UserWordId == obj.Id);
+                var wordItem = user?.Dictionaries.First().UserWords.FirstOrDefault(x => x.UserWordId == obj.Id);
                 if (wordItem != null)
                 {
                     wordItem.Word = obj.Value;
