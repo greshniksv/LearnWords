@@ -32,21 +32,21 @@ namespace LearnWords.Controllers
 
                 dict.UserWords.Add(new UserWord()
                 {
-                    RusWord = "Стол",
+                    Description = "Стол",
                     Word = "Table",
                     Remember = 0
                 });
 
                 dict.UserWords.Add(new UserWord()
                 {
-                    RusWord = "Телефон",
+                    Description = "Телефон",
                     Word = "Phone",
                     Remember = 0
                 });
 
                 dict.UserWords.Add(new UserWord()
                 {
-                    RusWord = "Монитор",
+                    Description = "Монитор",
                     Word = "Monitor",
                     Remember = 0
                 });

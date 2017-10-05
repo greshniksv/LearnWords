@@ -90,3 +90,7 @@ textarea {
     background-repeat: no-repeat;
     display: none;
 }
+
+.max-width-100 {
+    max-width: 100% !important;
+}

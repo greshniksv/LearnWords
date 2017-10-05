@@ -14,7 +14,7 @@ namespace LearnWords.Controllers.Api
 {
     public class WordsHelperController : System.Web.Http.ApiController
     {
-        [System.Web.Http.HttpGet]
+        [HttpGet]
         public JsonResult<JsonResponse> CheckWord(string word)
         {
             WordsService service = new WordsService();
@@ -22,7 +22,7 @@ namespace LearnWords.Controllers.Api
             return res ? Json(new JsonResponse(true)) : Json(new JsonResponse(false, "Word not found"));
         }
 
-        [System.Web.Http.HttpGet]
+        [HttpGet]
         public JsonResult<List<Word>> GetList()
         {
             var userId = HttpContext.Current.UserId();
@@ -40,10 +40,10 @@ namespace LearnWords.Controllers.Api
             return Json(new List<Word>());
         }
 
-        [System.Web.Http.HttpPost]
+        [HttpPost]
         public JsonResult<JsonResponse> Add(Word word)
         {
-            if (string.IsNullOrEmpty(word.RusWord) || string.IsNullOrEmpty(word.OtherWord))
+            if (string.IsNullOrEmpty(word.Description) || string.IsNullOrEmpty(word.Value))
             {
                 return Json(new JsonResponse(false, "Word can't be null empty"));
             }
@@ -56,9 +56,8 @@ namespace LearnWords.Controllers.Api
                 {
                     user.Dictionaries.First().UserWords.Add(new UserWord
                     {
-                        Word = word.OtherWord,
-                        RusWord = word.RusWord,
-                        Image = word.Image,
+                        Word = word.Value,
+                        Description = word.Description,
                         User = user
                     });
                     db.SaveChanges();
@@ -68,8 +67,8 @@ namespace LearnWords.Controllers.Api
             return Json(new JsonResponse(false, "User not found"));
         }
 
-        [System.Web.Http.HttpPost]
-        public JsonResult<JsonResponse> Edit(EditObject obj)
+        [HttpPost]
+        public JsonResult<JsonResponse> Edit(Word obj)
         {
             var userId = HttpContext.Current.UserId();
             using (var db = new DBContext())
@@ -79,6 +78,8 @@ namespace LearnWords.Controllers.Api
                 if (wordItem != null)
                 {
                     wordItem.Word = obj.Value;
+                    wordItem.Description = obj.Description;
+                    wordItem.Remember = 0;
                     db.SaveChanges();
                     return Json(new JsonResponse(true));
                 }
@@ -86,7 +87,7 @@ namespace LearnWords.Controllers.Api
             return Json(new JsonResponse(false, "User or word not found"));
         }
 
-        [System.Web.Http.HttpPost]
+        [HttpPost]
         public JsonResult<JsonResponse> Delete([FromBody]Guid id)
         {
             var userId = HttpContext.Current.UserId();

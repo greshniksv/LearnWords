@@ -8,13 +8,17 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="text-center">
             <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#AddNew">Добавить</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#AddNew" onclick="OnAdd()">Добавить</button>
 
-                <button id="editBtn" type="button" class="btn btn-default" 
-                        data-toggle="modal" data-target="#Edit" onclick="OnEdit()" disabled="disabled">Изменить</button>
+                <button id="editBtn" type="button" class="btn btn-default"
+                        data-toggle="modal" data-target="#Edit" onclick="OnEdit()" disabled="disabled">
+                    Изменить
+                </button>
 
-                <button id="deleteBtn" type="button" class="btn btn-default" 
-                        data-toggle="modal" data-target="#Delete" onclick="OnDelete()" disabled="disabled">Удалить</button>
+                <button id="deleteBtn" type="button" class="btn btn-default"
+                        data-toggle="modal" data-target="#Delete" onclick="OnDelete()" disabled="disabled">
+                    Удалить
+                </button>
             </div>
         </div>
     </div>
@@ -22,8 +26,8 @@
 
 <div class="content-container">
     <div class="content">
-        <table id="list" class="table .table-condensed">
-            <tr><th style="width: 90%"> Слово </th></tr>
+        <table id="list" class="table table-condensed">
+            <tr><th style="width: 90%;"> Слово </th></tr>
         </table>
     </div>
 </div>
@@ -37,15 +41,20 @@
                 <h4 class="modal-title">Добавить слово</h4>
             </div>
             <div class="modal-body">
+                
                 <div class="form-group">
-                    <label for="newWordRus">Описание слова</label>
-                    <input class="form-control input-sm" id="newWordRus" type="text" name="value" />
+                    <label for="newDescription">Описание слова</label>
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-info-sign" style="top: 0px !important;"> </span>
+                        <textarea class="form-control input-sm max-width-100" rows="5" id="newDescription" name="value"></textarea>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label for="newWordOther">Слово</label>
+                    <label for="newWord">Слово</label>
                     <div class="input-group">
                         <span id="checkWord" status="1" class="input-group-addon glyphicon glyphicon-ok" style="top: 0px !important;"> </span>
-                        <input type="text" id="newWordOther"  class="form-control" placeholder="Галочка доя проверки слова">
+                        <input type="text" id="newWord" class="form-control max-width-100" placeholder="Галочка доя проверки слова">
                     </div>
                 </div>
             </div>
@@ -64,14 +73,28 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Добавить слово</h4>
+                <h4 class="modal-title">Изменить слово</h4>
             </div>
             <div class="modal-body">
+                
                 <div class="form-group">
-                    <label for="oldWord">Cлово для изменения</label>
-                    <input class="form-control input-sm" id="oldWord" type="text" name="value" />
+                    <label for="oldDescription">Описание слова</label>
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-info-sign" style="top: 0px !important;"> </span>
+                        <textarea class="form-control input-sm max-width-100" rows="5" id="oldDescription" name="value"></textarea>
+                    </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="oldWord">Слово</label>
+                    <div class="input-group">
+                        <span id="oldCheckWord" status="1" class="input-group-addon glyphicon glyphicon-ok" style="top: 0px !important;"> </span>
+                        <input type="text" id="oldWord" class="form-control max-width-100" placeholder="Галочка доя проверки слова">
+                    </div>
+                </div>
+
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" onclick="Edit()">Изменить</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
@@ -89,10 +112,28 @@
                 <h4 class="modal-title">Удаление</h4>
             </div>
             <div class="modal-body">
+                
+                
                 <div class="form-group">
-                    <label for="delWord">Вы ходите удалить слово</label>
-                    <input class="form-control input-sm" id="delWord" type="text" name="value" disabled="disabled" />
+                    <label for="delDescription">Описание слова</label>
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-info-sign" style="top: 0px !important;"> </span>
+                        <textarea class="form-control input-sm max-width-100" disabled="disabled" rows="5" id="delDescription" name="value"></textarea>
+                    </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="delWord">Слово</label>
+                    <div class="input-group">
+                        <span id="delCheckWord" status="1" class="input-group-addon glyphicon glyphicon-ok" style="top: 0px !important;"> </span>
+                        <input type="text" id="delWord" disabled="disabled" class="form-control max-width-100" placeholder="Галочка доя проверки слова">
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                    <label for="delWord">Вы ходите удалить слово</label>
+                    <input class="form-control input-sm" id="delWord" type="text" name="value" disabled="disabled"/>
+                </div>*@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" onclick="Delete()">Удалить</button>
@@ -102,10 +143,22 @@
     </div>
 </div>
 
+<div id="wordItem" class="hide">
+    <div class="row">
+        <div class="col-xs-4">Описание:</div>
+        <div name="description" class="col-xs-8"> </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">Слово:</div>
+        <div name="word" class="col-xs-8"> </div>
+    </div>
+    <div class="row">
+        <div name="image" class="col-xs-12"><a href="#" onclick="ShowImage(this)"> Картинка </a></div>
+    </div>
+</div>
+
 <script type="text/javascript">
     var lastActive = null;
-
-   
 
 
     $(document).ready(function () {
@@ -114,7 +167,7 @@
         // Load words
         LoadWords();
 
-        $("#checkWord").click(function() {
+        $("#checkWord").click(function () {
             if ($(this).attr("status") === "1") {
                 $(this).attr("status", "0");
                 $(this).removeClass("glyphicon-ok");
@@ -133,54 +186,75 @@
         $('#list tr[word-id]').remove();
 
         $.getJSON("/api/WordsHelper/GetList", function (data) {
-                
 
-                for (var i = 0; i < data.length; i++) {
-                    $('#list tr:last').after('<tr word-id="' + data[i].Id + '"><td> ' + data[i].Value + ' </td></tr>');
+            for (var i = 0; i < data.length; i++) {
+                var item = $("#wordItem").clone();
+
+                item.removeClass("hide");
+                item.find("div[name='description']").html(data[i].Description);
+                item.find("div[name='word']").html(data[i].Value);
+
+                if (data[i].HasImage === true) {
+                    item.find("div[name='image']").find("a").attr("image", data[i].Id);
                 }
 
-                $("table tr").on("click", function () {
-                    var item = $(this);
+                $('#list tr:last').after('<tr word-id="' + data[i].Id + '"><td> </td></tr>');
+                $("#list tr[word-id='" + data[i].Id + "'] td").html(item);
+            }
 
-                    if (typeof item.attr("word-id") === "undefined") {
+            $("table tr").on("click", function () {
+                var item = $(this);
+
+                if (typeof item.attr("word-id") === "undefined") {
+                    return;
+                }
+
+                if (lastActive != null) {
+                    lastActive.removeClass("active");
+                    if (item.attr("word-id") === lastActive.attr("word-id")) {
+                        lastActive = null;
+                        $("#editBtn").attr("disabled", "disabled");
+                        $("#deleteBtn").attr("disabled", "disabled");
                         return;
                     }
+                }
+                item.addClass("active");
+                lastActive = item;
+                $("#editBtn").removeAttr("disabled");
+                $("#deleteBtn").removeAttr("disabled");
+            });
 
-                    if (lastActive != null) {
-                        lastActive.removeClass("active");
-                        if (item.attr("word-id") === lastActive.attr("word-id")) {
-                            lastActive = null;
-                            $("#editBtn").attr("disabled", "disabled");
-                            $("#deleteBtn").attr("disabled", "disabled");
-                            return;
-                        }
-                    }
-                    item.addClass("active");
-                    lastActive = item;
-                    $("#editBtn").removeAttr("disabled");
-                    $("#deleteBtn").removeAttr("disabled");
-                });
-
-            })
+        })
             .fail(function () {
                 alert("Error get words");
             });
+    }
+
+    function Unselect() {
+        lastActive = null;
+        $("#editBtn").attr("disabled", "disabled");
+        $("#deleteBtn").attr("disabled", "disabled");
+    }
+
+    function OnAdd() {
+        $("#newDescription").val("");
+        $("#newWord").val("");
     }
 
     function Add() {
         $('#AddNew').modal('hide');
         Layout.ShowLoading();
 
-        var newWordRus = $("#newWordRus").val();
-        var newWordOther = $("#newWordOther").val();
+        var newDescription = $("#newDescription").val();
+        var newWord= $("#newWord").val();
 
-        Ajax.Post("/api/WordsHelper/Add", JSON.stringify({ "RusWord": newWordRus, "OtherWord": newWordOther }),
+        Ajax.Post("/api/WordsHelper/Add", JSON.stringify({ "Description": newDescription, "Value": newWord }),
             function (data) {
                 if (data.Code !== 0) {
                     alert(data.Description);
                 }
             },
-            function(jqXHR, textStatus, errorThrown) {
+            function (jqXHR, textStatus, errorThrown) {
                 alert(textStatus);
             },
             function () {
@@ -192,9 +266,12 @@
 
 
     function OnDelete() {
-        var word = lastActive.find("td:first").text();
+        var description = lastActive.find("td:first").find("div[name='description']").text();
+        var word = lastActive.find("td:first").find("div[name='word']").text();
+
         word = word.trim(' ');
         $("#delWord").val(word);
+        $("#delDescription").val(description);
         $("#delWord").attr("word-id", lastActive.attr("word-id"));
     }
 
@@ -207,6 +284,7 @@
                 if (data.Code !== 0) {
                     alert(data.Description);
                 }
+                Unselect();
             },
             function (jqXHR, textStatus, errorThrown) {
                 alert(textStatus);
@@ -219,9 +297,12 @@
     }
 
     function OnEdit() {
-        var word = lastActive.find("td:first").text();
+        var description = lastActive.find("td:first").find("div[name='description']").text();
+        var word = lastActive.find("td:first").find("div[name='word']").text();
+
         word = word.trim(' ');
         $("#oldWord").val(word);
+        $("#oldDescription").val(description);
         $("#oldWord").attr("word-id", lastActive.attr("word-id"));
     }
 
@@ -229,12 +310,14 @@
         $('#Edit').modal('hide');
         var id = $("#oldWord").attr("word-id");
         var value = $("#oldWord").val();
+        var description = $("#oldDescription").val();
 
-        Ajax.Post("/api/WordsHelper/Edit", JSON.stringify({ "Id": id, "Value": value }),
+        Ajax.Post("/api/WordsHelper/Edit", JSON.stringify({ "Id": id, "Value": value, "Description": description }),
             function (data) {
                 if (data.Code !== 0) {
                     alert(data.Description);
                 }
+                Unselect();
             },
             function (jqXHR, textStatus, errorThrown) {
                 alert(textStatus);
@@ -245,7 +328,5 @@
             }
         );
     }
-
-
 
 </script>

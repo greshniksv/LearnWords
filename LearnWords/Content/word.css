@@ -17,3 +17,6 @@
     height: 100%;
 }
 
+#list {
+    max-width: 95% !important;
+}

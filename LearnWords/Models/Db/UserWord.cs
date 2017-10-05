@@ -9,7 +9,7 @@ namespace LearnWords.Models.Db
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public Guid UserWordId { get; set; }
-        public string RusWord { get; set; }
+        public string Description { get; set; }
         public string Word { get; set; }
         public byte[] Image { get; set; }
         public int Remember { get; set; }
